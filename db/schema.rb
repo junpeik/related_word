@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150817095404) do
+ActiveRecord::Schema.define(version: 20150818093136) do
+
+  create_table "synonyms", force: :cascade do |t|
+    t.integer  "word_id"
+    t.string   "syn1"
+    t.string   "syn2"
+    t.string   "syn3"
+    t.string   "syn4"
+    t.string   "syn5"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "words", force: :cascade do |t|
     t.string   "search"

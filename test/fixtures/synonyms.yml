@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word_id: 1
+  syn1: MyString
+  syn2: MyString
+  syn3: MyString
+  syn4: MyString
+  syn5: MyString
+
+two:
+  word_id: 1
+  syn1: MyString
+  syn2: MyString
+  syn3: MyString
+  syn4: MyString
+  syn5: MyString
