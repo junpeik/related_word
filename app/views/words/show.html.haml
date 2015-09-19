@@ -1,6 +1,10 @@
 %h1 関連語
 
-- @synonyms.elements.each('toplevel/CompleteSuggestion/suggestion') do |element|
-  %p= element.attributes["data"]
+- @word.all_synonyms.each do |synonym|
+  %p= synonym
 
-= button_to '関連語上位５件をDBに保存', word_synonyms_path(@word), params: { search_word: @word, synonyms: five_synonyms(@synonyms) }
+= form_for @synonym, url: [@word, @synonym] do |f|
+  - top5 = @word.top_5_synonyms
+  - (1..5).each do |index|
+    = f.hidden_field "syn#{index}".to_sym, value: top5[index - 1]
+  = f.submit '関連語上位５件をDBに保存'

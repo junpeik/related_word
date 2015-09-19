@@ -15,7 +15,9 @@ class WordsController < ApplicationController
 
   def show
     @word = Word.find(params[:id])
+    
     @synonyms = @word.get_synonyms
+    @synonym = @word.build_synonym
   end
 
   private
