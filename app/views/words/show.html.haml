@@ -3,4 +3,4 @@
 - @synonyms.elements.each('toplevel/CompleteSuggestion/suggestion') do |element|
   %p= element.attributes["data"]
 
-= button_to '関連語上位５件をDBに保存', synonyms_path, params: { search_word: @word, synonyms: five_synonyms(@synonyms) }
+= button_to '関連語上位５件をDBに保存', word_synonyms_path(@word), params: { search_word: @word, synonyms: five_synonyms(@synonyms) }

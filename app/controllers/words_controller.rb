@@ -1,13 +1,27 @@
 class WordsController < ApplicationController
-  include WordsHelper
 
   def index
     @words = Word.all
   end
 
-  def show
-    @word = params[:search_word]
-    @synonyms = create_synonyms(params[:search_word])
+  def create
+    word = Word.new(word_params)
+    if word.save
+      redirect_to word
+    else
+      redirect_to :words, error: 'NG'
+    end
   end
+
+  def show
+    @word = Word.find(params[:id])
+    @synonyms = @word.get_synonyms
+  end
+
+  private
+
+    def word_params
+      params.require(:word).permit(:search)
+    end
 
 end

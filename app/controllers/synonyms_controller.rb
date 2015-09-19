@@ -1,5 +1,5 @@
 class SynonymsController < ApplicationController
-  before_action :save_word, only: :create
+  before_action :set_word, only: %i[show create]
 
   def show
     @synonym = Synonym.find(params[:id])
@@ -12,12 +12,12 @@ class SynonymsController < ApplicationController
                                    syn3: synonyms[2],
                                    syn4: synonyms[3],
                                    syn5: synonyms[4])
-    redirect_to synonym_path(@word.synonym)
+    redirect_to word_synonym_path(@word, @word.synonym)
   end
 
   private
 
-    def save_word
-      @word = Word.create(search: params[:search_word])
+    def set_word
+      @word = Word.find[params[:word_id])
     end
 end

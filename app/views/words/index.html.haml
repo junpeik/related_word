@@ -1,9 +1,8 @@
 %h1入力された単語の関連語を10個表示します
 
-= form_tag(search_path) do
-  %div
-    = text_field_tag :search_word, "", placeholder: '単語を入力してください'
-    = submit_tag '送信'
+= form_for(Word.new) do |f|
+  = f.text_field :search #, placeholder: '単語を入力してください'
+  = f.submit '送信'
 
 - unless @words.empty?
   %pこれまでの検索結果
@@ -13,8 +12,5 @@
         \検索語：
         = word.search
         \関連語：
-        = word.synonym.syn1
-        = word.synonym.syn2
-        = word.synonym.syn3
-        = word.synonym.syn4
-        = word.synonym.syn5
+        - (1..5).each do |index|
+          = word.try(:synonym).try("syn#{index}".to_sym)

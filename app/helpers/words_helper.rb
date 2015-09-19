@@ -14,9 +14,4 @@ module WordsHelper
     end
   end
 
-  def create_synonyms(query)
-    encoded_query = URI.encode(query)
-    url = "http://www.google.com/complete/search?h1=ja&output=toolbar&q=#{encoded_query}"
-    REXML::Document.new(open(url).read.encode('UTF-8'))
-  end
 end
